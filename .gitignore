@@ -1,0 +1,14 @@
+# 依赖（本地开发时才需要）
+node_modules/
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# 日志
+*.log
+npm-debug.log*
+pnpm-debug.log*

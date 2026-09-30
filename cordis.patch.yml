@@ -1,0 +1,4 @@
+# dsh-homepage-palette-skin：把本插件插入到 profile 的组合层。
+- insert:
+    - id: dsh-homepage-palette-skin
+      name: 'dsh-homepage-palette-skin'
