@@ -55,6 +55,9 @@
   动一下 `body.style` 触发重读。
 
 ### Changed
+- 项目改名为 **dsh-homepage-glass**（原 dsh-homepage-palette-skin）—— 原名的 `palette`
+  只描述了配色，现在还有流动背景这一层。GitHub 旧地址会自动重定向；设置名字空间随条目 id
+  一起改，profile 补丁层的 `lightTint` 值同步迁移，**已保存的偏好不丢**。
 
 - 「雾蓝 · 深」改名为 **「雾蓝」** —— 淡、中两档删除后，"深"已失去对比对象。
   **只改显示名**，档位键 `mist-3` 未动，所以已保存的偏好与宿主白名单都不受影响。

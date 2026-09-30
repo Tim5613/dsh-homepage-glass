@@ -1,4 +1,4 @@
-# dsh-homepage-palette-skin
+# dsh-homepage-glass
 
 > 深蓝渐变侧边栏；浅色模式底下可以铺上官网首页那层缓慢流动的蓝，配色是按 deepseek.com 逐像素量出来的。
 > Deep blue gradient sidebar, with deepseek.com's slowly drifting blue as an option behind the light theme.
@@ -68,7 +68,7 @@
 
 ```bash
 # 在你的 dsh profile 目录下（例如 ~/.dsh/profiles/desktop）
-pnpm add github:Tim5613/dsh-homepage-palette-skin
+pnpm add github:Tim5613/dsh-homepage-glass
 ```
 
 然后在 profile 的 `package.json` 里把包名加进 `dsh.profile.bundles`：
@@ -79,7 +79,7 @@ pnpm add github:Tim5613/dsh-homepage-palette-skin
     "profile": {
       "bundles": [
         "...",
-        "dsh-homepage-palette-skin"
+        "dsh-homepage-glass"
       ]
     }
   }
@@ -89,17 +89,17 @@ pnpm add github:Tim5613/dsh-homepage-palette-skin
 ### 方式二：clone 到本地插件目录
 
 ```bash
-git clone https://github.com/Tim5613/dsh-homepage-palette-skin.git ~/.dsh/plugins/dsh-homepage-palette-skin
+git clone https://github.com/Tim5613/dsh-homepage-glass.git ~/.dsh/plugins/dsh-homepage-glass
 ```
 
 再把它作为 `file:` 依赖装进 profile：
 
 ```bash
 cd ~/.dsh/profiles/desktop
-pnpm add file:~/\.dsh/plugins/dsh-homepage-palette-skin
+pnpm add file:~/\.dsh/plugins/dsh-homepage-glass
 ```
 
-（Windows 路径写成 `file:C:/Users/<Windows用户名>/.dsh/plugins/dsh-homepage-palette-skin`）
+（Windows 路径写成 `file:C:/Users/<Windows用户名>/.dsh/plugins/dsh-homepage-glass`）
 
 ### 方式三：交给 DSH 插件管理器
 
@@ -107,7 +107,7 @@ pnpm add file:~/\.dsh/plugins/dsh-homepage-palette-skin
 `package.json`、`pnpm-lock.yaml` 与 `dsh.profile.bundles`：
 
 ```
-install_bundle  target = file:C:/Users/<Windows用户名>/.dsh/plugins/dsh-homepage-palette-skin
+install_bundle  target = file:C:/Users/<Windows用户名>/.dsh/plugins/dsh-homepage-glass
 ```
 
 > **生效方式：无需刷新、无需重启。** DSH 的客户端 bundle 是热加载的，
