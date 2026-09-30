@@ -9,7 +9,7 @@
 
 | 浅色模式 | 深色模式 |
 | :------: | :------: |
-| ![浅色模式](assets/screenshot-light-mode.png) | ![深色模式](assets/screenshot-dark-mode.png) |
+| ![浅色模式](assets/screenshot-light.png) | ![深色模式](assets/screenshot-dark.png) |
 
 下面是配色预览（按官网预览图的实测值渲染，不是截图）：
 
