@@ -1,6 +1,6 @@
 {
   "name": "dsh-homepage-palette-skin",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "DSH 客户端皮肤：复刻 DeepSeek Harness 官网预览图的深蓝渐变玻璃侧边栏（右侧内容区仍跟随浅色/深色）。",
   "type": "module",
   "main": "./lib/index.js",
@@ -33,12 +33,22 @@
   "bugs": {
     "url": "https://github.com/Tim5613/dsh-homepage-palette-skin/issues"
   },
+  "peerDependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
     },
     "client": {
       "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings",
         "@deepseek-ai/dsh-client-ui-theme"
       ],
       "platform": "web"
