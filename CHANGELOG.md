@@ -7,6 +7,14 @@
 发布流程：新建 GitHub Release 时，把对应版本的小节（从标题到下一个分隔线之前）整段复制到 Release 正文。
 -->
 
+## [Unreleased]
+
+### Changed
+
+- 项目改名为 **dsh-homepage-glass**（原 dsh-homepage-palette-skin）。GitHub 旧地址自动重定向；
+  设置名字空间随条目 id 一起改，profile 补丁层的 `lightTint` 值同步迁移，已保存的偏好不丢。
+- **深色底柔化**：画布 `#151517 → #1d1d1f`，卡片 `#232324 → #2b2b2c`、`#2c2c2e → #343436`、
+  `#353638 → #3d3e40` —— 四个层级一起抬 8 阶，对比度降下来而"画布最深、卡片逐层变亮"的层次不变。
 ## [1.2.0] - 2026-09-30
 
 ### Added
@@ -55,9 +63,6 @@
   动一下 `body.style` 触发重读。
 
 ### Changed
-- 项目改名为 **dsh-homepage-glass**（原 dsh-homepage-palette-skin）—— 原名的 `palette`
-  只描述了配色，现在还有流动背景这一层。GitHub 旧地址会自动重定向；设置名字空间随条目 id
-  一起改，profile 补丁层的 `lightTint` 值同步迁移，**已保存的偏好不丢**。
 
 - 「雾蓝 · 深」改名为 **「雾蓝」** —— 淡、中两档删除后，"深"已失去对比对象。
   **只改显示名**，档位键 `mist-3` 未动，所以已保存的偏好与宿主白名单都不受影响。
