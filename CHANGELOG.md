@@ -1,0 +1,106 @@
+# Changelog
+
+本文件记录本项目的所有重要变更。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)，
+版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
+
+<!--
+发布流程：新建 GitHub Release 时，把对应版本的小节（从标题到下一个分隔线之前）整段复制到 Release 正文。
+-->
+
+## [1.0.0] - 2026-09-30
+
+首次发布。把 DeepSeek Harness 官网预览图（macOS）的**深蓝渐变玻璃侧边栏**复刻到 Windows 客户端。
+
+### 亮点
+
+- **左侧栏**：固定深蓝渐变（顶部 `#3a4f6c` 蓝 → 底部 `#393d45` 中性深灰），**不跟随浅色 / 深色**
+- **右侧内容区**：保持不透明，**正常跟随浅色 / 深色**
+- **品牌色**：主按钮 / 品牌强调色 = DeepSeek 蓝 `#4d6bfe`（深色模式 `#6799fe`）
+- **深底配浅字**：侧边栏子树内的文字 / 边框 / 交互色自动固定为浅色，
+  所以即使当前是浅色模式，侧边栏也不会出现"深底深字"读不了
+- **零 npm 依赖**：宿主提供全部依赖，仅用 `ctx.theme` 与一张注入的样式表
+
+### 颜色全部来自逐像素采样
+
+不是肉眼估的 —— 对官网预览图采样并用 `P = a·255 + (1−a)·B` 反解：
+
+| 项目 | 实测值 |
+| ---- | ------ |
+| 渐变 顶部 | `#3a4f6c` |
+| 渐变 中段 | `#414a56` |
+| 渐变 底部 | `#393d45` |
+| 面板叠加（按钮 / 选中行） | `rgba(255,255,255,.085)` |
+| 正文文字 | `#e6e8eb` |
+| 分区标题 | `#9399a1` |
+
+**关键：饱和度是向下递减的 —— 顶部偏蓝，越往下越接近中性深灰，底部并不发紫。**
+
+### 安装
+
+三种方式任选其一。**生效无需刷新、无需重启**（DSH 客户端 bundle 是热加载的）。
+
+**1. 从 GitHub 安装**
+
+```bash
+# 在你的 dsh profile 目录下（例如 ~/.dsh/profiles/desktop）
+pnpm add github:Tim5613/dsh-homepage-palette-skin
+```
+
+然后把包名加进 profile `package.json` 的 `dsh.profile.bundles`：
+
+```json
+{ "dsh": { "profile": { "bundles": ["...", "dsh-homepage-palette-skin"] } } }
+```
+
+**2. 锁定版本安装**
+
+```bash
+pnpm add github:Tim5613/dsh-homepage-palette-skin#v1.0.0
+```
+
+**3. 交给 DSH 插件管理器**（`file:` 规格，本地开发模式）
+
+```
+install_bundle  target = file:<你的路径>/dsh-homepage-palette-skin
+```
+
+### 实现要点
+
+这套侧边栏 DSH **本来就自带**，但被 `[data-platform=darwin]` 锁死在 macOS；
+Windows 上 `sidebarCol` 只是一条不透明纯色。本插件要绕过五个坑：
+
+1. **平台锁** —— 官方样式写在 `[data-platform=darwin]` 下，Windows 一条不生效。
+2. **侧边栏不是一个元素** —— `.BynINW_sidebarCol` 里还嵌着 ui-sidebar 的 `SidebarRoot`，
+   它自带 `background:var(--dsw-specific-sidebar-fill)` 且 `height:100%`，等于盖了个不透明盖子。
+   → 把该 token 在侧边栏子树内置为 `transparent`（不依赖哈希类名）。
+3. **内容卡片左上 16px 圆角缺口** 会露出框架底色。
+   → 框架底色设成 `var(--dsw-alias-bg-base)`（= 卡片色），缺口隐形。
+4. **自己加的顶部高光会留亮带** —— `inset 0 1px 0 rgba(255,255,255,.16)` 实测在圆角处
+   留下 `#6a7492` 亮带。已去掉。
+5. **不能只靠 `backdrop-filter`** —— 系统关闭「透明效果」时 Chromium 会连模糊一起停用。
+   → 渐变直接写在侧边栏上，模糊只作加分项。
+
+### 已知边界
+
+参考图的通透有一半来自 **macOS 原生窗口 vibrancy**（Electron `vibrancy: "sidebar"` +
+透明背景色，桌面被系统实时模糊后透上来）。本插件在**渲染层**改 CSS，看不到窗口外的桌面；
+DSH 在 Windows 上创建主窗口时也没有开启任何材质。
+
+所以本插件做到的是**把参考图的颜色与透明度关系 1:1 复刻**；
+**真正的"看见桌面"需要改客户端本体**。另外，Electron 官方的 `backgroundMaterial`
+（mica / acrylic）要求 **Windows 11**，Windows 10 上会被静默忽略。
+
+### 环境要求
+
+- DSH 客户端（含 `@deepseek-ai/dsh-client-ui-theme` 的 Web 组合：桌面端或 `dsh web`）
+- Node.js ≥ 22（仅为安装；插件本身零依赖）
+- 浅色 / 深色 / 跟随系统三种偏好均支持
+
+### 变更明细
+
+- Added: 深蓝渐变玻璃侧边栏（固定，不随主题）
+- Added: 侧边栏子树内的浅色文字 / 边框 / 交互 token 覆盖
+- Added: 品牌蓝 token 覆盖层（`#4d6bfe` / `#6799fe`）
+- Added: 配色预览图 `preview.png`（按实测值渲染）
+
+**完整提交对比**：https://github.com/Tim5613/dsh-homepage-palette-skin/commits/v1.0.0
