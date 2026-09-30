@@ -3,6 +3,16 @@
 > A DeepSeek Harness client skin that reproduces the official homepage preview's **deep-blue gradient glass sidebar** on Windows.
 > 复刻 DeepSeek Harness 官网预览图（macOS）侧边栏的 DSH 客户端皮肤。
 
+## 截图
+
+同一个皮肤在两种主题下的样子 —— **左侧栏固定深蓝渐变，右侧内容区跟随浅色 / 深色**：
+
+| 浅色模式 | 深色模式 |
+| :------: | :------: |
+| ![浅色模式](assets/screenshot-light-mode.png) | ![深色模式](assets/screenshot-dark-mode.png) |
+
+下面是配色预览（按官网预览图的实测值渲染，不是截图）：
+
 ![palette preview](preview.png)
 
 ## 效果
@@ -137,7 +147,11 @@ DSH 在 Windows 上创建窗口时也没有开启透明 —— 在 `app.asar` �
 ├── lib/
 │   ├── index.js          宿主侧（空实现，仅保证 loader 条目可解析）
 │   └── client.js         客户端侧：注入皮肤样式表 + 品牌蓝 token 覆盖层
-├── preview.png           配色预览（按实测值渲染）
+├── assets/               浅色 / 深色截图
+├── screenshots.json      声明截图，供市场详情页使用
+├── preview.png           配色预览（按实测值渲染，非截图）
+├── CHANGELOG.md
+├── LICENSE
 └── README.md
 ```
 
