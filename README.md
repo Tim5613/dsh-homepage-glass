@@ -30,9 +30,22 @@
 | 档位 | 底色 |
 | ---- | ---- |
 | 默认 | DSH 原生 `#ffffff` |
+| **官网流动** | 复刻 deepseek.com 首页**缓慢流动的蓝色背景**（见下） |
 | 雾蓝 · 淡 | `#f2f5f9` |
 | 雾蓝 · 中 | `#e9eef6` |
 | 雾蓝 · 深 | `#dee5ef` |
+
+**「官网流动」** 不是纯色，而是官网首页那层动画底：
+
+- 官网原实现是 WebGL —— `type:"pattern"` 着色器，实测配置
+  `colors ["#8AA3D6","#FFFFFF","#FFFFFF"]`、`speed 14`、`swirl 12`、`distortion 20`、
+  `scale .5`、`shape "checks"`、`shapeScale 10`、`offsetY 65`。
+  时间在着色器里是 `t = .5 × (毫秒×0.001 × speed/100)`，**约 0.07 秒/秒**，所以流动极慢。
+- 外层还有一个**向下淡出的遮罩**：`linear-gradient(#000000fc 0%, #000000e8 8.98%, transparent 100%)`。
+- 本插件用 CSS 近似：**色值与遮罩逻辑照搬**，流动改用 `transform` 位移
+  （合成器加速；`background-position` 会每帧整块重绘）。
+- 蓝色集中在顶部标题带，向下淡到纸色，正文区不受影响；系统关闭动效时不动
+  （`prefers-reduced-motion`）。
 
 三档着色都是 `#3a4f6c`（侧边栏顶端）的**同色相推导**，所以和左侧栏是一套材质，
 不会出现"左边冷蓝、右边暖黄"的割裂。底色只改 `--dsw-alias-bg-base` 一个 token，

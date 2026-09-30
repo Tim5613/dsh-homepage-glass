@@ -7,6 +7,24 @@
 发布流程：新建 GitHub Release 时，把对应版本的小节（从标题到下一个分隔线之前）整段复制到 Release 正文。
 -->
 
+## [1.2.0] - 2026-09-30
+
+### Added
+
+- **「官网流动」**：浅色内容配色新增一档，复刻 <https://www.deepseek.com/> 首页那层
+  **缓慢流动的蓝色背景**。
+  - 官网原实现是 WebGL：`type:"pattern"` 着色器，实测配置为
+    `colors ["#8AA3D6","#FFFFFF","#FFFFFF"]`、`speed 14`、`swirl 12`、
+    `distortion 20`、`scale .5`、`shape "checks"`、`shapeScale 10`、`offsetY 65`；
+    `u_time = 毫秒×0.001×(speed/100)` 且着色器内再 `×.5`，**约 0.07 秒/秒**，所以极慢。
+  - 外层还有一个**向下淡出的遮罩**：
+    `linear-gradient(#000000fc 0%, #000000e8 8.98%, transparent 100%)`。
+  - 本插件用 CSS 近似：**色值与遮罩逻辑照搬**，流动改用 `transform` 位移
+    （合成器加速；若用 `background-position` 会每帧整块重绘）。
+  - 只画在内容列、只作用于浅色模式 —— 侧边栏完全不受影响。遮罩向下淡出，
+    所以蓝色集中在顶部标题带，正文区基本回到纸色，不牺牲可读性。
+  - 尊重 `prefers-reduced-motion`：系统关闭动效时不动。
+
 ## [1.1.0] - 2026-09-30
 
 ### Added
