@@ -1,6 +1,6 @@
 {
   "name": "dsh-homepage-palette-skin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "DSH 客户端皮肤：复刻 DeepSeek Harness 官网预览图的深蓝渐变玻璃侧边栏（右侧内容区仍跟随浅色/深色）。",
   "type": "module",
   "main": "./lib/index.js",

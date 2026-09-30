@@ -7,7 +7,7 @@
 发布流程：新建 GitHub Release 时，把对应版本的小节（从标题到下一个分隔线之前）整段复制到 Release 正文。
 -->
 
-## [Unreleased]
+## [1.0.1] - 2026-09-30
 
 ### Fixed
 
@@ -15,6 +15,14 @@
   `calc(var(--dsh-windows-sidebar-width) - 1px)`，比侧边栏真实右边缘少 1px，
   于是 y=40（标题栏高度）处出现一个台阶。改为直接使用该变量，交界在全高对齐。
   （实测依据：浅色 / 深色两张截图里，y<40 交界在 x=283，y≥40 在 x=284。）
+
+### Added
+
+- 浅色 / 深色截图 `assets/screenshot-light-mode.png` 与 `assets/screenshot-dark-mode.png`，
+  以及 `screenshots.json` —— 供插件市场详情页展示。
+- README 增加「截图」小节（并列展示两种主题），并补全目录结构。
+
+**完整提交对比**：https://github.com/Tim5613/dsh-homepage-palette-skin/compare/v1.0.0...v1.0.1
 
 ## [1.0.0] - 2026-09-30
 
