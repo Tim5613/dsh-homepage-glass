@@ -1,7 +1,7 @@
 {
   "name": "dsh-homepage-palette-skin",
   "version": "1.2.0",
-  "description": "DSH 客户端皮肤：复刻 DeepSeek Harness 官网预览图的深蓝渐变玻璃侧边栏（右侧内容区仍跟随浅色/深色）。",
+  "description": "深蓝渐变侧边栏；浅色模式底下可以铺上官网首页那层缓慢流动的蓝，配色是按 deepseek.com 逐像素量出来的。",
   "type": "module",
   "main": "./lib/index.js",
   "exports": {

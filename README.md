@@ -1,7 +1,7 @@
 # dsh-homepage-palette-skin
 
-> A DeepSeek Harness client skin that reproduces the official homepage preview's **deep-blue gradient glass sidebar** on Windows.
-> 复刻 DeepSeek Harness 官网预览图（macOS）侧边栏的 DSH 客户端皮肤。
+> 深蓝渐变侧边栏；浅色模式底下可以铺上官网首页那层缓慢流动的蓝，配色是按 deepseek.com 逐像素量出来的。
+> Deep blue gradient sidebar, with deepseek.com's slowly drifting blue as an option behind the light theme.
 
 ## 截图
 
