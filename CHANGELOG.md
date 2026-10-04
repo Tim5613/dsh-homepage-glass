@@ -7,6 +7,18 @@
 发布流程：新建 GitHub Release 时，把对应版本的小节（从标题到下一个分隔线之前）整段复制到 Release 正文。
 -->
 
+## [Unreleased]
+
+### Changed
+
+- **截图瘦身**：`assets/screenshot-light.png`（303 KB → 84 KB，-72%）、
+  `assets/screenshot-dark.png`（46 KB → 18 KB，-61%）、`preview.png`（42 KB → 15 KB，-65%）
+  重编码为 8 位索引色 PNG。尺寸与画面不变：全图最大通道差 15（浅色）/ 42（深色）、
+  均值 0.131 / 0.026，且差值集中在文字边缘的抗锯齿像素，纯色区与渐变区几乎全为 0，
+  所以看不出色带。README 与市场详情页读的就是这几张图，卡片加载因此变快。
+- 新增 `npm run png:optimize`（`scripts/optimize-png.mjs`）：换过截图后重跑即可，
+  已优化的图不会被改小或改坏。`sharp` 只作为 devDependency，不进包。
+
 ## [1.3.0] - 2026-09-30
 
 ### Changed

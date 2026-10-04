@@ -4,6 +4,9 @@
   "description": "深蓝渐变侧边栏；浅色模式底下可以铺上官网首页那层缓慢流动的蓝，配色是按 deepseek.com 逐像素量出来的。",
   "type": "module",
   "main": "./lib/index.js",
+  "scripts": {
+    "png:optimize": "node scripts/optimize-png.mjs"
+  },
   "exports": {
     ".": "./lib/index.js",
     "./client": "./lib/client.js",
@@ -40,6 +43,9 @@
     "@deepseek-ai/schemastery": {
       "optional": true
     }
+  },
+  "devDependencies": {
+    "sharp": "^0.35.5"
   },
   "dsh": {
     "bundle": {
