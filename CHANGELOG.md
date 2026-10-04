@@ -7,7 +7,7 @@
 发布流程：新建 GitHub Release 时，把对应版本的小节（从标题到下一个分隔线之前）整段复制到 Release 正文。
 -->
 
-## [Unreleased]
+## [1.3.1] - 2026-10-04
 
 ### Changed
 
